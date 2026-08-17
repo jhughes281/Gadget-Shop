@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shop — Gadgetry</title>
+<meta name="description" content="The full Gadgetry catalogue: crowdfunded gear, gadgets, household appliances and tools. Filter by category or by where a product is in its lifecycle.">
+<meta name="theme-color" content="#0b0e14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/gadgetry.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0e14'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%231b34d8' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23ff5b24'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="masthead">
+  <div class="masthead-in">
+    <a class="brand" href="index.html">
+      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+      Gadgetry
+    </a>
+    <ul class="nav" data-nav>
+      <li><a href="shop.html" aria-current="page">Shop all</a></li>
+      <li><a href="shop.html?stage=shipping">New</a></li>
+      <li><a href="shop.html?cat=crowdfunded">Crowdfunded</a></li>
+      <li><a href="shop.html?cat=household">Home</a></li>
+      <li><a href="shop.html?cat=tools">Tools</a></li>
+    </ul>
+    <div class="masthead-end">
+      <button class="icon-btn menu-btn" data-menu aria-expanded="false" aria-label="Toggle menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+      </button>
+      <button class="icon-btn" data-open-cart aria-label="Open cart">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 6h16l-1.5 11.5a2 2 0 0 1-2 1.75H7.5a2 2 0 0 1-2-1.75z"/><path d="M9 6a3 3 0 0 1 6 0"/></svg>
+        <span class="cart-count" data-cart-count data-empty="true">0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="ticker">
+  <div class="ticker-track" data-ticker></div>
+</div>
+
+<main id="main" class="wrap">
+
+  <div class="rule" style="margin-top:2.5rem">
+    <span class="rule-code">CAT.00</span>
+    <h1 class="rule-title">The catalogue</h1>
+    <span class="rule-aside">Updated weekly</span>
+  </div>
+
+  <form class="shop" data-shop onsubmit="return false">
+    <div class="rail">
+      <fieldset class="rail-group" style="border:0">
+        <legend class="rail-legend">Category</legend>
+        <div data-rail-cats></div>
+      </fieldset>
+      <fieldset class="rail-group" style="border:0">
+        <legend class="rail-legend">Stage</legend>
+        <div data-rail-stages></div>
+      </fieldset>
+      <p class="stage-copy" style="font-size:12.5px">Stage says where a product is between a campaign page and our shelf. <a href="index.html#main" style="color:var(--cobalt)">How it works</a></p>
+    </div>
+
+    <div>
+      <div class="shop-bar">
+        <span class="shop-count" data-shop-count>16 items</span>
+        <span class="sort">
+          <label class="eyebrow" for="sort">Sort</label>
+          <select id="sort" data-sort>
+            <option value="curated">Curated</option>
+            <option value="stage">By stage</option>
+            <option value="price-asc">Price, low to high</option>
+            <option value="price-desc">Price, high to low</option>
+          </select>
+        </span>
+      </div>
+      <div class="grid" data-grid="shop"></div>
+    </div>
+  </form>
+
+</main>
+
+<footer class="foot" style="margin-top:4rem">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <p class="foot-brand">Gadgetry</p>
+        <p class="foot-note">Crowdfunded gear, new gadgets, household appliances and tools — backed early, tested, then stocked.</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="shop.html">Everything</a></li>
+          <li><a href="shop.html?cat=crowdfunded">Crowdfunded</a></li>
+          <li><a href="shop.html?cat=gadgets">Gadgets</a></li>
+          <li><a href="shop.html?cat=household">Household</a></li>
+          <li><a href="shop.html?cat=tools">Tools</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Orders</h4>
+        <ul>
+          <li><a href="shop.html">Shipping</a></li>
+          <li><a href="shop.html">Returns, 30 days</a></li>
+          <li><a href="shop.html">Track an order</a></li>
+          <li><a href="shop.html">Spares and parts</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Gadgetry</h4>
+        <ul>
+          <li><a href="index.html#main">How we pick</a></li>
+          <li><a href="shop.html?stage=spotted">The watch list</a></li>
+          <li><a href="index.html">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-base">
+      <span>© 2026 Gadgetry</span>
+      <span>Free shipping over $75 · 30-day returns</span>
+      <span>Drawings by us, not the manufacturer</span>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/catalog.js"></script>
+<script src="assets/js/store.js"></script>
+</body>
+</html>
