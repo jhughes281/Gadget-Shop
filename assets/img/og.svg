@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Gadgetry — everything new, in one place">
+  <rect width="1200" height="630" fill="#fbfcfd"/>
+  <g stroke="#0b0e14" stroke-opacity="0.08" stroke-width="1">
+    <path d="M0 30h1200M0 90h1200M0 150h1200M0 210h1200M0 270h1200M0 330h1200M0 390h1200M0 450h1200M0 510h1200M0 570h1200"/>
+    <path d="M30 0v630M90 0v630M150 0v630M210 0v630M270 0v630M330 0v630M390 0v630M450 0v630M510 0v630M570 0v630M630 0v630M690 0v630M750 0v630M810 0v630M870 0v630M930 0v630M990 0v630M1050 0v630M1110 0v630M1170 0v630"/>
+  </g>
+  <g fill="none" stroke="#0b0e14" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <ellipse cx="920" cy="200" rx="130" ry="32"/>
+    <path d="M790 200a130 88 0 0 1 260 0"/>
+    <ellipse cx="920" cy="320" rx="112" ry="28" stroke="#0b3ec7"/>
+    <ellipse cx="920" cy="320" rx="72" ry="18" stroke="#0b3ec7"/>
+    <ellipse cx="920" cy="440" rx="132" ry="33"/>
+    <path d="M788 440v44a132 33 0 0 0 264 0v-44"/>
+    <rect x="888" y="474" width="64" height="15" rx="7.5" stroke="#0b3ec7"/>
+  </g>
+  <circle cx="70" cy="72" r="15" fill="none" stroke="#0b3ec7" stroke-width="4"/>
+  <circle cx="70" cy="72" r="5" fill="#b33507"/>
+  <text x="100" y="84" font-family="Archivo, Arial Black, sans-serif" font-size="34" font-weight="800" letter-spacing="-1" fill="#0b0e14">GADGETRY</text>
+  <text x="70" y="330" font-family="Archivo, Arial Black, sans-serif" font-size="86" font-weight="800" letter-spacing="-3.5" fill="#0b0e14">EVERYTHING</text>
+  <text x="70" y="410" font-family="Archivo, Arial Black, sans-serif" font-size="86" font-weight="800" letter-spacing="-3.5" fill="#0b3ec7">NEW,</text>
+  <text x="70" y="490" font-family="Archivo, Arial Black, sans-serif" font-size="86" font-weight="800" letter-spacing="-3.5" fill="#0b0e14">IN ONE PLACE.</text>
+  <text x="70" y="560" font-family="IBM Plex Mono, monospace" font-size="18" letter-spacing="3.6" fill="#5a6478">CROWDFUNDED &#183; GADGETS &#183; HOUSEHOLD &#183; TOOLS</text>
+</svg>

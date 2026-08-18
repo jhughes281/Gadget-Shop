@@ -4,96 +4,156 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Product — Gadgetry</title>
-<meta name="description" content="Specification, lifecycle stage and our notes on why we stock it.">
+<meta name="description" content="Specification, lifecycle stage, dimensioned drawing and our notes on why we stock it.">
 <meta name="theme-color" content="#0b0e14">
+<link rel="canonical" href="https://jhughes281.github.io/gadgetry/product.html">
+<meta property="og:title" content="Product — Gadgetry">
+<meta property="og:description" content="Crowdfunded gear, new gadgets, household appliances and tools — backed early, tested, then stocked.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://jhughes281.github.io/gadgetry/product.html">
+<meta property="og:image" content="https://jhughes281.github.io/gadgetry/assets/img/og.svg">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62.5..125,100..900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/gadgetry.css">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0e14'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%231b34d8' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23ff5b24'/%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230b0e14'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%230b3ec7' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23b33507'/%3E%3C/svg%3E">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "Gadgetry",
+  "description": "Crowdfunded gear, new gadgets, household appliances and tools — backed early, tested, then stocked.",
+  "url": "https://jhughes281.github.io/gadgetry/",
+  "slogan": "Everything new, in one place."
+}
+</script>
 </head>
 <body>
 
-<a class="skip" href="#main">Skip to content</a>
+<a class="o-skip-link" href="#main-content">Skip to main content</a>
 
-<header class="masthead">
-  <div class="masthead-in">
-    <a class="brand" href="index.html">
-      <svg class="brand-mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
-      Gadgetry
-    </a>
-    <ul class="nav" data-nav>
-      <li><a href="shop.html">Shop all</a></li>
-      <li><a href="shop.html?stage=shipping">New</a></li>
-      <li><a href="shop.html?cat=crowdfunded">Crowdfunded</a></li>
-      <li><a href="shop.html?cat=household">Home</a></li>
-      <li><a href="shop.html?cat=tools">Tools</a></li>
-    </ul>
-    <div class="masthead-end">
-      <button class="icon-btn menu-btn" data-menu aria-expanded="false" aria-label="Toggle menu">
+<div class="c-announce">
+  <p class="c-announce__text">
+    <b>Tessera Split Keyboard</b> production run landed —
+    <a href="shop.html?stage=shipping">shipping in three days</a>
+  </p>
+</div>
+
+<header class="c-nav">
+  <div class="c-nav__bar">
+    <div class="c-nav__logo">
+      <a href="index.html" aria-label="Gadgetry, go to homepage">
+        <svg class="c-nav__mark" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+        Gadgetry
+      </a>
+    </div>
+
+    <nav class="c-nav__nav" id="main-nav" data-nav>
+      <h2 class="u-visually-hidden">Main navigation</h2>
+      <ul class="c-nav__list o-list">
+        <li class="c-nav__item"><a href="shop.html">Shop all</a></li>
+        <li class="c-nav__item"><a href="shop.html?cat=crowdfunded">Crowdfunded</a></li>
+        <li class="c-nav__item"><a href="shop.html?cat=household">Household</a></li>
+        <li class="c-nav__item"><a href="shop.html?cat=tools">Tools</a></li>
+        <li class="c-nav__item"><a href="shop.html?stage=spotted">Watch list</a></li>
+      </ul>
+      <div class="c-nav__footer">
+        <a class="o-btn o-btn--ghost o-btn--arrow" href="#newsletter">Get the drop list</a>
+      </div>
+    </nav>
+
+    <div class="c-nav__controls">
+      <button class="c-nav__btn c-nav__toggle" data-menu aria-expanded="false" aria-controls="main-nav" aria-label="Open navigation">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
       </button>
-      <button class="icon-btn" data-open-cart aria-label="Open cart">
+      <button class="c-nav__btn" data-open-cart aria-label="Open cart" aria-haspopup="dialog">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 6h16l-1.5 11.5a2 2 0 0 1-2 1.75H7.5a2 2 0 0 1-2-1.75z"/><path d="M9 6a3 3 0 0 1 6 0"/></svg>
-        <span class="cart-count" data-cart-count data-empty="true">0</span>
+        <span class="c-nav__counter" data-cart-count data-empty="true">0</span>
       </button>
     </div>
   </div>
 </header>
 
-<main id="main" class="wrap">
+<main id="main-content" tabindex="-1" class="l-wrapper">
   <div class="detail" data-product></div>
 
   <section style="padding-bottom:4rem">
     <div class="rule">
       <span class="rule-code">SEC.03</span>
       <h2 class="rule-title">Alongside it</h2>
-      <a class="rule-aside" href="shop.html">Whole catalogue →</a>
+      <a class="rule-aside" href="shop.html">Whole catalogue &#8594;</a>
     </div>
     <div class="grid" data-grid="related"></div>
   </section>
 </main>
 
-<footer class="foot">
-  <div class="wrap">
-    <div class="foot-grid">
-      <div>
-        <p class="foot-brand">Gadgetry</p>
-        <p class="foot-note">Crowdfunded gear, new gadgets, household appliances and tools — backed early, tested, then stocked.</p>
-      </div>
-      <div>
-        <h4>Shop</h4>
-        <ul>
-          <li><a href="shop.html">Everything</a></li>
-          <li><a href="shop.html?cat=crowdfunded">Crowdfunded</a></li>
-          <li><a href="shop.html?cat=gadgets">Gadgets</a></li>
-          <li><a href="shop.html?cat=household">Household</a></li>
-          <li><a href="shop.html?cat=tools">Tools</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Orders</h4>
-        <ul>
-          <li><a href="shop.html">Shipping</a></li>
-          <li><a href="shop.html">Returns, 30 days</a></li>
-          <li><a href="shop.html">Track an order</a></li>
-          <li><a href="shop.html">Spares and parts</a></li>
-        </ul>
-      </div>
-      <div>
-        <h4>Gadgetry</h4>
-        <ul>
-          <li><a href="index.html#main">How we pick</a></li>
-          <li><a href="shop.html?stage=spotted">The watch list</a></li>
-          <li><a href="index.html">Contact</a></li>
-        </ul>
-      </div>
+<footer class="c-footer">
+  <div class="c-footer__inner l-wrapper">
+    <div class="c-newsletter" id="newsletter">
+      <h2 class="c-newsletter__headline o-title--small">Get the drop list</h2>
+      <p class="c-newsletter__text">One email when something on the watch list opens, and one when a backed product starts shipping. Nothing else.</p>
+
+      <!-- Set data-endpoint to a form handler (Formspree, Buttondown, Mailchimp)
+           to make this live. Until then it validates and reports honestly. -->
+      <form class="c-newsletter__form" data-newsletter data-endpoint="" novalidate>
+        <label class="c-newsletter__label" for="drop-email">Email address</label>
+        <div class="c-newsletter__field">
+          <input class="c-newsletter__input" type="email" id="drop-email" name="email" autocomplete="email" placeholder="you@example.com" required>
+          <button class="o-btn o-btn--arrow" type="submit">Subscribe</button>
+        </div>
+        <div class="c-newsletter__pot" aria-hidden="true">
+          <label for="drop-company">Company</label>
+          <input type="text" id="drop-company" name="company" tabindex="-1" autocomplete="off">
+        </div>
+        <p class="c-newsletter__note" data-newsletter-note role="status" aria-live="polite"></p>
+      </form>
     </div>
-    <div class="foot-base">
-      <span>© 2026 Gadgetry</span>
-      <span>Free shipping over $75 · 30-day returns</span>
-      <span>Drawings by us, not the manufacturer</span>
-    </div>
+
+    <nav class="c-footer__nav">
+      <h2 class="u-visually-hidden">Footer navigation</h2>
+      <ul class="c-footer__nav-list o-list">
+        <li>
+          <h3 class="c-footer__heading">Shop</h3>
+          <ul class="o-list">
+            <li class="c-footer__child-item"><a href="shop.html">Everything</a></li>
+            <li class="c-footer__child-item"><a href="shop.html?cat=crowdfunded">Crowdfunded</a></li>
+            <li class="c-footer__child-item"><a href="shop.html?cat=gadgets">Gadgets</a></li>
+            <li class="c-footer__child-item"><a href="shop.html?cat=household">Household</a></li>
+            <li class="c-footer__child-item"><a href="shop.html?cat=tools">Tools</a></li>
+          </ul>
+        </li>
+        <li>
+          <h3 class="c-footer__heading">Orders</h3>
+          <ul class="o-list">
+            <li class="c-footer__child-item"><a href="shop.html?stage=shipping">Shipping now</a></li>
+            <li class="c-footer__child-item"><a href="shop.html?stage=stock">In stock today</a></li>
+            <li class="c-footer__child-item"><a href="shop.html">Spares and parts</a></li>
+            <li class="c-footer__child-item"><a href="#newsletter">Returns, 30 days</a></li>
+          </ul>
+        </li>
+        <li>
+          <h3 class="c-footer__heading">Gadgetry</h3>
+          <ul class="o-list">
+            <li class="c-footer__child-item"><a href="index.html#main-content">How we pick</a></li>
+            <li class="c-footer__child-item"><a href="shop.html?stage=spotted">The watch list</a></li>
+            <li class="c-footer__child-item"><a href="index.html#main-content">Field notes</a></li>
+            <li class="c-footer__child-item"><a href="#newsletter">Contact</a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+  <div class="c-footer__base l-wrapper">
+    <p>&#169; 2026 Gadgetry</p>
+    <p>Drawings by us, not the manufacturer</p>
+    <nav aria-label="Legal">
+      <ul class="c-footer__legal-list o-list">
+        <li class="c-footer__legal-item"><a href="#newsletter">Privacy</a></li>
+        <li class="c-footer__legal-item"><a href="#newsletter">Terms</a></li>
+      </ul>
+    </nav>
   </div>
 </footer>
 

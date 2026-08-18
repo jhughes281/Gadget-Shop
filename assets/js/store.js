@@ -42,7 +42,7 @@
     const p = byId(id);
     if (!p) return;
     if (p.stage === "spotted") {
-      toast("Kelvin is not funded yet — we'll email you when it opens");
+      toast(p.name + " is not funded yet — leave your email below");
       return;
     }
     cart[id] = (cart[id] || 0) + (qty || 1);
@@ -88,8 +88,8 @@
       "</span>";
     const cta =
       p.stage === "spotted"
-        ? '<button class="btn btn-ghost btn-sm btn-block card-add" data-notify="' + p.id + '">Notify me</button>'
-        : '<button class="btn btn-sm btn-block card-add" data-add="' + p.id + '">Add to cart</button>';
+        ? '<button class="o-btn o-btn--ghost o-btn--sm o-btn--block card-add" data-notify="' + p.id + '">Notify me</button>'
+        : '<button class="o-btn o-btn--sm o-btn--block card-add" data-add="' + p.id + '">Add to cart</button>';
 
     return (
       '<article class="card">' +
@@ -111,10 +111,13 @@
       el.innerHTML =
         '<div class="empty"><h3>Nothing matches that</h3>' +
         "<p>Try loosening a filter — the catalogue is small on purpose.</p>" +
-        '<button class="btn btn-ghost" data-clear>Clear filters</button></div>';
+        '<button class="o-btn o-btn--ghost" data-clear>Clear filters</button></div>';
       return;
     }
-    el.innerHTML = list.map(cardHTML).join("");
+    const asSlides = el.hasAttribute("data-slider-track");
+    el.innerHTML = list
+      .map((p) => (asSlides ? '<li class="l-slider__slide">' + cardHTML(p) + "</li>" : cardHTML(p)))
+      .join("");
   }
 
   /* --------------------------------------------------------------- toast */
@@ -138,7 +141,7 @@
       '<div class="scrim" data-scrim></div>' +
       '<aside class="drawer" data-drawer role="dialog" aria-modal="true" aria-label="Cart" tabindex="-1">' +
       '<div class="drawer-head"><span class="drawer-title">Your cart</span>' +
-      '<button class="icon-btn" data-close-cart aria-label="Close cart">Close ✕</button></div>' +
+      '<button class="c-nav__btn" data-close-cart aria-label="Close cart">Close ✕</button></div>' +
       '<div class="drawer-body" data-cart-body></div>' +
       '<div class="drawer-foot" data-cart-foot></div></aside>' +
       '<div class="toast" data-toast role="status" aria-live="polite"></div>';
@@ -156,6 +159,22 @@
     drawerEl.querySelector("[data-close-cart]").focus();
   }
 
+  function trapTab(e) {
+    if (e.key !== "Tab" || !drawerEl || drawerEl.dataset.open !== "true") return;
+    const focusable = [...drawerEl.querySelectorAll('a[href],button:not(:disabled),input,[tabindex]:not([tabindex="-1"])')]
+      .filter((el) => el.offsetParent !== null);
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+    } else if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
   function closeDrawer() {
     drawerEl.dataset.open = "false";
     scrimEl.dataset.open = "false";
@@ -168,6 +187,7 @@
     document.querySelectorAll("[data-cart-count]").forEach((el) => {
       el.textContent = n;
       el.dataset.empty = n === 0 ? "true" : "false";
+      el.setAttribute("aria-label", n === 1 ? "1 item in cart" : n + " items in cart");
     });
 
     const body = document.querySelector("[data-cart-body]");
@@ -178,7 +198,7 @@
     if (!items.length) {
       body.innerHTML =
         '<div class="drawer-empty"><p>Nothing in here yet.</p>' +
-        '<a class="btn btn-ghost" href="shop.html">Browse the catalogue</a></div>';
+        '<a class="o-btn o-btn--ghost" href="shop.html">Browse the catalogue</a></div>';
       foot.innerHTML = "";
       return;
     }
@@ -208,21 +228,8 @@
       '<div class="total-row"><span>Shipping</span><span>' +
       (ship === 0 ? "Free" : money(ship)) + "</span></div>" +
       '<div class="total-row is-grand"><span>Total</span><b>' + money(sub + ship) + "</b></div>" +
-      '<button class="btn btn-block" data-checkout>Checkout</button>' +
+      '<button class="o-btn o-btn--block" data-checkout>Checkout</button>' +
       '<p class="drawer-fine">Free shipping over $75 · 30-day returns</p>';
-  }
-
-  /* ------------------------------------------------------------- ticker */
-
-  function paintTicker() {
-    const track = document.querySelector("[data-ticker]");
-    if (!track) return;
-    const row = TICKER.map(
-      (t) =>
-        '<span class="ticker-item">' + esc(t.k) + " <b>" + esc(t.v) + "</b>" +
-        (t.hot ? " <i>" + esc(t.hot) + "</i>" : "") + "</span>"
-    ).join("");
-    track.innerHTML = row + row; /* doubled so the loop is seamless */
   }
 
   /* --------------------------------------------------------------- home */
@@ -310,12 +317,13 @@
     const id = new URLSearchParams(location.search).get("id");
     const p = byId(id) || PRODUCTS[0];
     document.title = p.name + " — Gadgetry";
+    productSchema(p);
 
     const cat = CATEGORIES.find((c) => c.id === p.category);
     let qty = 1;
 
     host.innerHTML =
-      '<div class="detail-plate"><div class="detail-grid-bg"></div>' +
+      '<div class="detail-plate o-plate">' +
       '<div class="plate">' + drawing(p) + pins(p) + "</div></div>" +
       "<div>" +
       '<p class="crumb"><a href="shop.html">Shop</a> / <a href="shop.html?cat=' + p.category + '">' +
@@ -331,11 +339,11 @@
       (p.backers ? " · " + p.backers.toLocaleString() + " backers" : "") + "</p>" +
       '<div class="detail-actions">' +
       (p.stage === "spotted"
-        ? '<button class="btn" data-notify="' + p.id + '">Email me when it opens</button>'
+        ? '<button class="o-btn" data-notify="' + p.id + '">Email me when it opens</button>'
         : '<span class="qty"><button data-qty="-1" aria-label="Decrease quantity">−</button>' +
           '<output data-qty-out>1</output>' +
           '<button data-qty="1" aria-label="Increase quantity">+</button></span>' +
-          '<button class="btn" data-add-detail="' + p.id + '">Add to cart</button>') +
+          '<button class="o-btn" data-add-detail="' + p.id + '">Add to cart</button>') +
       "</div>" +
       '<p class="note"><b>Why we stock it.</b> ' + esc(p.note) + "</p>" +
       '<table class="specs"><caption class="eyebrow" style="text-align:left;padding-bottom:.6rem">Specification</caption><tbody>' +
@@ -362,6 +370,138 @@
     }
   }
 
+
+  /* ------------------------------------------------------------- sliders */
+
+  function note(form, msg, state) {
+    const el = form.querySelector("[data-newsletter-note]");
+    if (!el) return;
+    el.textContent = msg;
+    el.dataset.state = state || "";
+  }
+
+  function mountSliders() {
+    document.querySelectorAll("[data-slider]").forEach((root) => {
+      const track = root.querySelector("[data-slider-track]");
+      const prev = root.querySelector("[data-slider-prev]");
+      const next = root.querySelector("[data-slider-next]");
+      if (!track || !prev || !next) return;
+
+      const step = () => {
+        const slide = track.querySelector(".l-slider__slide");
+        return slide ? slide.getBoundingClientRect().width + 16 : track.clientWidth;
+      };
+
+      const sync = () => {
+        const max = track.scrollWidth - track.clientWidth - 2;
+        prev.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= max;
+        const idle = max <= 2;
+        prev.hidden = next.hidden = idle;
+      };
+
+      prev.addEventListener("click", () => { track.scrollLeft -= step(); });
+      next.addEventListener("click", () => { track.scrollLeft += step(); });
+      track.addEventListener("scroll", sync, { passive: true });
+      window.addEventListener("resize", sync);
+      sync();
+      /* the featured track is filled after mount, so re-check next frame */
+      requestAnimationFrame(sync);
+    });
+  }
+
+  /* -------------------------------------------------------- testimonials */
+
+  function mountTestimonials() {
+    const root = document.querySelector("[data-testimonials]");
+    if (!root) return;
+    const slides = [...root.querySelectorAll(".c-testimonials__slide")];
+    const dots = [...root.querySelectorAll(".c-testimonials__dot")];
+    if (slides.length < 2) return;
+
+    let i = 0;
+    const show = (n) => {
+      i = (n + slides.length) % slides.length;
+      slides.forEach((s, k) => (s.dataset.active = k === i ? "true" : "false"));
+      dots.forEach((d, k) => d.setAttribute("aria-selected", k === i ? "true" : "false"));
+    };
+
+    dots.forEach((d, k) => d.addEventListener("click", () => show(k)));
+    root.addEventListener("keydown", (e) => {
+      if (e.key === "ArrowRight") show(i + 1);
+      if (e.key === "ArrowLeft") show(i - 1);
+    });
+    show(0);
+  }
+
+  /* ---------------------------------------------------------- newsletter */
+
+  function mountNewsletter() {
+    document.querySelectorAll("[data-newsletter]").forEach((form) => {
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const input = form.querySelector("input[type=email]");
+        const pot = form.querySelector("input[name=company]");
+        if (pot && pot.value) return; /* bot */
+
+        const value = input.value.trim();
+        if (!value || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(value)) {
+          note(form, "Enter an email address we can reach you at", "error");
+          input.focus();
+          return;
+        }
+
+        const endpoint = form.dataset.endpoint;
+        if (!endpoint) {
+          note(form, "Not connected yet — add a form endpoint to go live", "error");
+          return;
+        }
+
+        note(form, "Sending…", "");
+        fetch(endpoint, {
+          method: "POST",
+          headers: { Accept: "application/json" },
+          body: new FormData(form),
+        })
+          .then((r) => {
+            if (!r.ok) throw new Error(r.status);
+            form.reset();
+            note(form, "You are on the list", "ok");
+          })
+          .catch(() => note(form, "That did not send — try again shortly", "error"));
+      });
+    });
+  }
+
+  /* ------------------------------------------------- product structured data */
+
+  function productSchema(p) {
+    const el = document.createElement("script");
+    el.type = "application/ld+json";
+    el.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Product",
+      name: p.name,
+      description: p.tagline,
+      sku: p.sku,
+      category: p.category,
+      brand: { "@type": "Brand", name: "Gadgetry" },
+      offers: {
+        "@type": "Offer",
+        price: p.price,
+        priceCurrency: "USD",
+        availability:
+          p.stage === "spotted"
+            ? "https://schema.org/PreOrder"
+            : p.stage === "backed"
+            ? "https://schema.org/PreOrder"
+            : "https://schema.org/InStock",
+        url: location.href,
+      },
+    });
+    document.head.appendChild(el);
+  }
+
   /* -------------------------------------------------------------- events */
 
   function wire() {
@@ -375,7 +515,16 @@
       const notify = e.target.closest("[data-notify]");
       if (notify) {
         e.preventDefault();
-        toast("We'll email you the day it opens");
+        const form = document.querySelector("[data-newsletter]");
+        const input = form && form.querySelector("input[type=email]");
+        if (input) {
+          form.scrollIntoView({ behavior: "smooth", block: "center" });
+          input.focus({ preventScroll: true });
+          const p = byId(notify.dataset.notify);
+          note(form, "We will email you when " + (p ? p.name : "it") + " opens", "ok");
+        } else {
+          toast("We will email you the day it opens");
+        }
         return;
       }
       if (e.target.closest("[data-open-cart]")) return openDrawer();
@@ -406,6 +555,7 @@
 
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape" && drawerEl && drawerEl.dataset.open === "true") closeDrawer();
+      trapTab(e);
     });
   }
 
@@ -413,9 +563,11 @@
 
   buildChrome();
   wire();
-  paintTicker();
   mountHome();
   mountShop();
   mountProduct();
+  mountSliders();
+  mountTestimonials();
+  mountNewsletter();
   paintCart();
 })();

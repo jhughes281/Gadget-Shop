@@ -557,15 +557,3 @@ const PRODUCTS = [
       <path class="ln ln-thin" d="M24 160h152"/>`,
   },
 ];
-
-/* Live inventory events for the masthead ticker. */
-const TICKER = [
-  { k: "Just funded", v: "Driftwave Open Buds", hot: "12,400 backers" },
-  { k: "Restocked", v: "Slate E-Ink Pad", hot: "38 units" },
-  { k: "Shipping now", v: "Tessera Split Keyboard" },
-  { k: "New in", v: "Micron Precision Kit" },
-  { k: "Low stock", v: "Perch Magnetic Stand", hot: "9 left" },
-  { k: "Spotted", v: "Kelvin Smart Mug", hot: "campaign opens Sept" },
-  { k: "Restocked", v: "Nomad 140 W Brick" },
-  { k: "Shipping now", v: "Ember Portable Hob" },
-];
